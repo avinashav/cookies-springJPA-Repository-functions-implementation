@@ -42,7 +42,7 @@ public class Cookie {
 
     }
     public Cookie(Long id, String domain, int pages,
-                  int unique_cookies, String cookies_changed, String banner,
+                  int unique_cookies, String cookies_changed, String banner ,
                   String cookie_list, String pref_center,
                   String datetime, String status) {
         super();

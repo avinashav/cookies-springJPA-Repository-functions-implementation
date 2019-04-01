@@ -19,11 +19,15 @@ public class CookiesServices {
     @Autowired
     private CookiesFunctionalRepository cookiesFunctionalRepository;
 
-    public List<CookieDTO> getAllCookieList(){
-        return        cookieRepository.findAll()
-                      .stream()
-                      .map(CookieDTO::convertToDto)
-                      .collect(Collectors.toList());
+//    public List<CookieDTO> getAllCookieList(){
+//        return        cookieRepository.findAll()
+//                      .stream()
+//                      .map(CookieDTO::convertToDto)
+//                      .collect(Collectors.toList());
+//    }
+
+    public Page<Cookie> getAllCookies(Pageable pageable){
+        return cookieRepository.findAll(pageable);
     }
 
     public void addCookie(CookieDTO cookiedto){
@@ -49,13 +53,9 @@ public class CookiesServices {
 
     //Substring Matching on Domain
     @Transactional
-    public Page<Cookie> findByDomainContaining(String substring, Pageable pageable){
-        return cookiesFunctionalRepository.findByDomainContaining(substring, pageable);
+    public Page<Cookie> findByDomainContaining(String searchString ,Pageable pageable){
+        return cookiesFunctionalRepository.findByDomainContaining(searchString, pageable);
     }
 
-    @Transactional
-    public Page<Cookie> findAllDomainBy(Pageable pageable){
-        return cookiesFunctionalRepository.findAllDomainBy(pageable);
-    }
 
 }

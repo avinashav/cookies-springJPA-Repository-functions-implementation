@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import java.util.List;
@@ -18,11 +19,17 @@ public class CookiesController {
     @Autowired
     private CookiesServices cookieservice;
 
+//
+//    @GetMapping
+//    public List<CookieDTO> getAllCookies() {
+//        return cookieservice.getAllCookieList();
+//    }
 
     @GetMapping
-    public List<CookieDTO> getAllCookies() {
-        return cookieservice.getAllCookieList();
+    public Page<Cookie> getAllCookies(@PageableDefault final Pageable pageable){
+        return cookieservice.getAllCookies(pageable);
     }
+
 
     @PostMapping
     public void addCookie(@RequestBody CookieDTO cookieDTO){
@@ -41,24 +48,18 @@ public class CookiesController {
     }
 
 
-    @GetMapping(value = "/findstatus")
-    public Page<Cookie> findByStatus(){
-        Pageable pageable =  new PageRequest(0, 3, Sort.Direction.ASC , "domain");
-        return cookieservice.findByStatus("Completed", pageable);
+    @GetMapping(params = {"checkStatus"})
+    public Page<Cookie> findByStatus(@PageableDefault final Pageable pageable ,
+                                     @RequestParam("checkStatus") String checkStatus){
+        return cookieservice.findByStatus(checkStatus, pageable);
     }
 
 
-    @GetMapping(value = "/findsubstringindomain")
-    public Page<Cookie> findByDomainContaining(){
-        Pageable pageable =  new PageRequest(0, 3);
-        String substring = "oogl";
-        return cookieservice.findByDomainContaining(substring , pageable);
+    @GetMapping(params = {"searchString"})
+    public Page<Cookie> findByDomainContaining(@PageableDefault final Pageable pageable,
+                                               @RequestParam("searchString") String searchString) {
+        return cookieservice.findByDomainContaining(searchString, pageable);
     }
 
-    @GetMapping(value = "/sortdomain")
-    public Page<Cookie> findAllByDomain() {
-        Pageable pageable =  new PageRequest(0, 3, Sort.Direction.ASC , "domain");
-        return cookieservice.findAllDomainBy(pageable);
-    }
 
     }

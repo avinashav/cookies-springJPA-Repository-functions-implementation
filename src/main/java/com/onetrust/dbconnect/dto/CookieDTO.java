@@ -2,6 +2,8 @@ package com.onetrust.dbconnect.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.onetrust.dbconnect.entity.Cookie;
+
+import javax.validation.constraints.Null;
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
