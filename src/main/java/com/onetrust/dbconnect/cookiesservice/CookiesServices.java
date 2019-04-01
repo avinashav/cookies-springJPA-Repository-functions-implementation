@@ -58,5 +58,4 @@ public class CookiesServices {
         return cookiesFunctionalRepository.findAllDomainBy(pageable);
     }
 
-
 }
