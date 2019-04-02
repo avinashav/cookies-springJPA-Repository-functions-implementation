@@ -1,5 +1,7 @@
 package com.onetrust.dbconnect.entity;
 
+import org.hibernate.annotations.ColumnDefault;
+
 import javax.persistence.*;
 
 @Entity
@@ -14,6 +16,7 @@ public class Cookie {
     @Column(name = "domain",unique = true, nullable = false)
     private String domain;
 
+//    @ColumnDefault(value = "10")
     @Column(name = "pages")
     private int pages;
 
