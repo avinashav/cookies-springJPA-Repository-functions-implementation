@@ -1,12 +1,12 @@
 package com.onetrust.dbconnect.entity;
 
-import org.hibernate.annotations.ColumnDefault;
-
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name = "Cookiemain")
-public class Cookie {
+public class Cookie implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,7 +16,6 @@ public class Cookie {
     @Column(name = "domain",unique = true, nullable = false)
     private String domain;
 
-//    @ColumnDefault(value = "10")
     @Column(name = "pages")
     private int pages;
 
@@ -36,7 +35,7 @@ public class Cookie {
     private String pref_center;
 
     @Column(name = "datetime")
-    private String datetime;
+    private Date datetime;
 
     @Column(name = "status")
     private String status;
@@ -47,7 +46,7 @@ public class Cookie {
     public Cookie(Long id, String domain, int pages,
                   int unique_cookies, String cookies_changed, String banner ,
                   String cookie_list, String pref_center,
-                  String datetime, String status) {
+                  Date datetime, String status) {
         super();
         this.id = id;
         this.domain = domain;
@@ -117,11 +116,11 @@ public class Cookie {
         this.pref_center = pref_center;
     }
 
-    public String getDatetime() {
+    public Date getDatetime() {
         return datetime;
     }
 
-    public void setDatetime(String datetime) {
+    public void setDatetime(Date datetime) {
         this.datetime = datetime;
     }
 

@@ -3,13 +3,13 @@ package com.onetrust.dbconnect.cookiescontroller;
 import com.onetrust.dbconnect.cookiesservice.CookiesServices;
 import com.onetrust.dbconnect.dto.CookieDTO;
 import com.onetrust.dbconnect.entity.Cookie;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.beans.factory.annotation.Autowired;
-import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping(value = "/cookies")
 public class CookiesController {
@@ -46,12 +46,14 @@ public class CookiesController {
         cookieservice.deleteCookie(ck);
     }
 
+
     /* localhost:8080/cookies/?page=0&size=5&sort=domain,ASC&checkStatus=Completed */
     @GetMapping(params = {"checkStatus"})
     public Page<Cookie> findByStatus(@PageableDefault final Pageable pageable ,
                                      @RequestParam("checkStatus") String checkStatus){
         return cookieservice.findByStatus(checkStatus, pageable);
     }
+
 
     /* localhost:8080/cookies/?page=0&size=5&sort=domain,ASC&searchString=oogl */
 
@@ -61,5 +63,15 @@ public class CookiesController {
         return cookieservice.findByDomainContaining(searchString, pageable);
     }
 
+//------------------------------------------------------------
 
-    }
+    /* For Displaying Latest addition record first */
+
+//    @GetMapping
+//    public Page<Cookie> findAllDomainWithPagination(@PageableDefault final Pageable pageable){
+//        return cookieservice.findAllDomainWithPagination(pageable);
+//    }
+
+
+//-------------------------------------------------------------
+}

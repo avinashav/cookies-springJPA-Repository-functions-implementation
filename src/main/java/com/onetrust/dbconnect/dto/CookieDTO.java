@@ -1,15 +1,11 @@
 package com.onetrust.dbconnect.dto;
 
+import java.text.DateFormat;
+import java.util.Random;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.onetrust.dbconnect.entity.Cookie;
 
-import javax.validation.constraints.Null;
-import java.sql.Date;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
+import java.util.Date;
 
 
 public class CookieDTO {
@@ -22,7 +18,7 @@ public class CookieDTO {
     private String banner;
     private String cookie_list;
     private String pref_center;
-    private String datetime;
+    private Date datetime;
     private String status;
 
     public CookieDTO() {
@@ -51,17 +47,29 @@ public class CookieDTO {
 
     public static Cookie convertFromDto(CookieDTO cookieDTO){
         Cookie cookie = new Cookie();
-        Date date = new Date(System.currentTimeMillis());
 
-        cookie.setBanner(cookieDTO.getBanner());
-        cookie.setCookie_list(cookieDTO.getCookie_list());
-        cookie.setCookies_changed(cookieDTO.getCookies_changed());
-        cookie.setDatetime(date.toString());
+//        Date date = new Date();
+//        java.text.SimpleDateFormat sdf =
+//                new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+//
+//        String currentTime = sdf.format(date);
+//
+        Random rand = new Random();
+        int random_unique_cookie = rand.nextInt(40);
+        int random_cookies_change = rand.nextInt(30);
+        String manage = "Manage";
+        String completed_status = "Completed";
+
+        cookie.setBanner(manage);
+        cookie.setCookie_list(manage);
+        cookie.setCookies_changed("+" + Integer.toString(random_cookies_change));
+
+        cookie.setDatetime(new Date());
         cookie.setDomain(cookieDTO.getDomain());
         cookie.setPages(cookieDTO.getPages());
-        cookie.setPref_center(cookieDTO.getPref_center());
-        cookie.setStatus(cookieDTO.getStatus());
-        cookie.setUnique_cookies(cookieDTO.getUnique_cookies());
+        cookie.setPref_center(manage);
+        cookie.setStatus(completed_status);
+        cookie.setUnique_cookies(random_unique_cookie);
         return cookie;
     }
 
@@ -143,9 +151,9 @@ public class CookieDTO {
         this.pref_center = pref_center;
     }
 
-    public String getDatetime() { return datetime; }
+    public Date getDatetime() { return datetime; }
 
-    public void setDatetime(String datetime) {
+    public void setDatetime(Date datetime) {
         this.datetime = datetime;
     }
 

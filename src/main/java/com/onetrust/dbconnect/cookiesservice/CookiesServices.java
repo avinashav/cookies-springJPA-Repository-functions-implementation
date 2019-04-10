@@ -1,4 +1,5 @@
 package com.onetrust.dbconnect.cookiesservice;
+
 import com.onetrust.dbconnect.dto.CookieDTO;
 import com.onetrust.dbconnect.entity.Cookie;
 import com.onetrust.dbconnect.repository.CookieRepository;
@@ -38,6 +39,7 @@ public class CookiesServices {
  *   }
 */
 
+
     @Transactional
     public void deleteCookie(CookieDTO cookiedto){
         cookieRepository.deleteByDomain(cookiedto.getDomain());
@@ -55,4 +57,14 @@ public class CookiesServices {
     }
 
 
+
+//----------------------------------------------------------------------
+
+    /* For Displaying Latest addition record first */
+
+//    public Page<Cookie> findAllDomainWithPagination(Pageable pageable){
+//        return cookiesFunctionalRepository.findAllDomainWithPagination(pageable);
+//    }
+
+//------------------------------------------------------------------------
 }
