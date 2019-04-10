@@ -17,11 +17,13 @@ public class CookiesController {
     @Autowired
     private CookiesServices cookieservice;
 
-//
-//    @GetMapping
-//    public List<CookieDTO> getAllCookies() {
-//        return cookieservice.getAllCookieList();
-//    }
+/*
+ *    //Get Cookies in List type
+ *    @GetMapping
+ *    public List<CookieDTO> getAllCookies() {
+ *        return cookieservice.getAllCookieList();
+ *    }
+*/
 
     /* localhost:8080/cookies/?page=0&size=5&sort=domain,ASC */
     @GetMapping
@@ -66,9 +68,10 @@ public class CookiesController {
 
     /* For Displaying Latest addition record first */
 /*
-    @GetMapping
-    public Page<Cookie> findAllDomainWithPagination(@PageableDefault final Pageable pageable){
-        return cookieservice.findAllDomainWithPagination(pageable);
-    }
+ *   @GetMapping
+ *   public Page<Cookie> findAllDomainWithPagination(@PageableDefault final Pageable pageable){
+ *       return cookieservice.findAllDomainWithPagination(pageable);
+ *   }
 */
+
 }

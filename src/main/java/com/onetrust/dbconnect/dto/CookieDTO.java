@@ -42,14 +42,13 @@ public class CookieDTO {
         Cookie cookie = new Cookie();
 
         Random rand = new Random();
-        int random_unique_cookie = rand.nextInt(50);
-        int random_cookies_change = rand.nextInt(45);
-        String manage = "Manage";
-        String completed_status = "Completed";
+        final int random_unique_cookie = rand.nextInt(50);
+        final int random_cookies_change = rand.nextInt(45);
+        final String manage = "Manage";
+        final String completed_status = "Completed";
 
         cookie.setBanner(manage);
         cookie.setCookies_changed("+" + Integer.toString(random_cookies_change));
-
         cookie.setDatetime(new Date());
         cookie.setDomain(cookieDTO.getDomain());
         cookie.setPages(cookieDTO.getPages());

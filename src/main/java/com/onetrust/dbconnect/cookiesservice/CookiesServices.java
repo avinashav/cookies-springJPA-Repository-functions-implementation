@@ -17,17 +17,21 @@ public class CookiesServices {
     @Autowired
     private CookiesFunctionalRepository cookiesFunctionalRepository;
 
-//    public List<CookieDTO> getAllCookieList(){
-//        return        cookieRepository.findAll()
-//                      .stream()
-//                      .map(CookieDTO::convertToDto)
-//                      .collect(Collectors.toList());
-//    }
+/*
+ *   public List<CookieDTO> getAllCookieList(){
+ *       return        cookieRepository.findAll()
+ *                     .stream()
+ *                     .map(CookieDTO::convertToDto)
+ *                     .collect(Collectors.toList());
+ *   }
+*/
 
+    @Transactional
     public Page<Cookie> getAllCookies(Pageable pageable){
         return cookieRepository.findAll(pageable);
     }
 
+    @Transactional
     public void addCookie(CookieDTO cookiedto){
        cookieRepository.save(CookieDTO.convertFromDto(cookiedto));
     }
@@ -49,7 +53,6 @@ public class CookiesServices {
         return cookiesFunctionalRepository.findByStatus(status, pageable);
     }
 
-    //Substring Matching on Domain
     @Transactional
     public Page<Cookie> findByDomainContaining(String searchString ,Pageable pageable){
         return cookiesFunctionalRepository.findByDomainContaining(searchString, pageable);
@@ -58,9 +61,10 @@ public class CookiesServices {
 
     /* For Displaying Latest addition record first */
 /*
-    public Page<Cookie> findAllDomainWithPagination(Pageable pageable){
-        return cookiesFunctionalRepository.findAllDomainWithPagination(pageable);
-    }
+ *   @Transactional
+ *   public Page<Cookie> findAllDomainWithPagination(Pageable pageable){
+ *       return cookiesFunctionalRepository.findAllDomainWithPagination(pageable);
+ *   }
 */
 
 }

@@ -5,7 +5,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 @Entity
-@Table(name = "Cookiemain")
+@Table(name = "COOKIEMAIN")
 public class Cookie implements Serializable {
 
     @Id
@@ -34,9 +34,9 @@ public class Cookie implements Serializable {
     @Column(name = "status")
     private String status;
 
-    public Cookie(){
-
+    public Cookie() {
     }
+
     public Cookie(Long id, String domain, int pages,
                   int unique_cookies, String cookies_changed, String banner ,
                   Date datetime, String status) {

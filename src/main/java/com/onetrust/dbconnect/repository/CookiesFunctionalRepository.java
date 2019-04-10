@@ -16,7 +16,6 @@ public interface CookiesFunctionalRepository extends PagingAndSortingRepository<
 
     Page<Cookie> findAllDomainBy(Pageable pageable);
 
-
     /* For Displaying Latest addition record first */
     @Query(value = "SELECT u FROM Cookie u ORDER BY datetime")
     Page<Cookie> findAllDomainWithPagination(Pageable pageable);
