@@ -1,11 +1,10 @@
 package com.onetrust.dbconnect.dto;
 
-import java.text.DateFormat;
-import java.util.Random;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.onetrust.dbconnect.entity.Cookie;
 
 import java.util.Date;
+import java.util.Random;
 
 
 public class CookieDTO {
@@ -16,8 +15,6 @@ public class CookieDTO {
     private int unique_cookies;
     private String cookies_changed;
     private String banner;
-    private String cookie_list;
-    private String pref_center;
     private Date datetime;
     private String status;
 
@@ -29,8 +26,6 @@ public class CookieDTO {
             , @JsonProperty("pages") int pages
             , @JsonProperty("unique_cookies") int unique_cookies
             , @JsonProperty("banner") String banner
-            , @JsonProperty("cookie_list") String cookie_list
-            , @JsonProperty("pref_center") String pref_center
             , @JsonProperty("cookies_changed") String cookies_changed
             , @JsonProperty("status") String status
     ) {
@@ -40,34 +35,24 @@ public class CookieDTO {
         this.unique_cookies = unique_cookies;
         this.cookies_changed = cookies_changed;
         this.banner = banner;
-        this.cookie_list = cookie_list;
-        this.pref_center = pref_center;
         this.status = status;
     }
 
     public static Cookie convertFromDto(CookieDTO cookieDTO){
         Cookie cookie = new Cookie();
 
-//        Date date = new Date();
-//        java.text.SimpleDateFormat sdf =
-//                new java.text.SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-//
-//        String currentTime = sdf.format(date);
-//
         Random rand = new Random();
-        int random_unique_cookie = rand.nextInt(40);
-        int random_cookies_change = rand.nextInt(30);
+        int random_unique_cookie = rand.nextInt(50);
+        int random_cookies_change = rand.nextInt(45);
         String manage = "Manage";
         String completed_status = "Completed";
 
         cookie.setBanner(manage);
-        cookie.setCookie_list(manage);
         cookie.setCookies_changed("+" + Integer.toString(random_cookies_change));
 
         cookie.setDatetime(new Date());
         cookie.setDomain(cookieDTO.getDomain());
         cookie.setPages(cookieDTO.getPages());
-        cookie.setPref_center(manage);
         cookie.setStatus(completed_status);
         cookie.setUnique_cookies(random_unique_cookie);
         return cookie;
@@ -77,12 +62,10 @@ public class CookieDTO {
         CookieDTO cookieDTO = new CookieDTO();
 
         cookieDTO.setBanner(cookie.getBanner());
-        cookieDTO.setCookie_list(cookie.getCookie_list());
         cookieDTO.setCookies_changed(cookie.getCookies_changed());
         cookieDTO.setDatetime(cookie.getDatetime());
         cookieDTO.setDomain(cookie.getDomain());
         cookieDTO.setPages(cookie.getPages());
-        cookieDTO.setPref_center(cookie.getPref_center());
         cookieDTO.setStatus(cookie.getStatus());
         cookieDTO.setUnique_cookies(cookie.getUnique_cookies());
 
@@ -133,22 +116,6 @@ public class CookieDTO {
 
     public void setBanner(String banner) {
         this.banner = banner;
-    }
-
-    public String getCookie_list() {
-        return cookie_list;
-    }
-
-    public void setCookie_list(String cookie_list) {
-        this.cookie_list = cookie_list;
-    }
-
-    public String getPref_center() {
-        return pref_center;
-    }
-
-    public void setPref_center(String pref_center) {
-        this.pref_center = pref_center;
     }
 
     public Date getDatetime() { return datetime; }

@@ -63,15 +63,12 @@ public class CookiesController {
         return cookieservice.findByDomainContaining(searchString, pageable);
     }
 
-//------------------------------------------------------------
 
     /* For Displaying Latest addition record first */
-
-//    @GetMapping
-//    public Page<Cookie> findAllDomainWithPagination(@PageableDefault final Pageable pageable){
-//        return cookieservice.findAllDomainWithPagination(pageable);
-//    }
-
-
-//-------------------------------------------------------------
+/*
+    @GetMapping
+    public Page<Cookie> findAllDomainWithPagination(@PageableDefault final Pageable pageable){
+        return cookieservice.findAllDomainWithPagination(pageable);
+    }
+*/
 }

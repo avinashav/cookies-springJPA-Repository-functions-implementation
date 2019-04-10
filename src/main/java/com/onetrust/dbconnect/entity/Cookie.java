@@ -28,12 +28,6 @@ public class Cookie implements Serializable {
     @Column(name = "banner")
     private String banner;
 
-    @Column(name = "cookie_list")
-    private String cookie_list;
-
-    @Column(name = "pref_center")
-    private String pref_center;
-
     @Column(name = "datetime")
     private Date datetime;
 
@@ -45,7 +39,6 @@ public class Cookie implements Serializable {
     }
     public Cookie(Long id, String domain, int pages,
                   int unique_cookies, String cookies_changed, String banner ,
-                  String cookie_list, String pref_center,
                   Date datetime, String status) {
         super();
         this.id = id;
@@ -54,8 +47,6 @@ public class Cookie implements Serializable {
         this.unique_cookies = unique_cookies;
         this.cookies_changed = cookies_changed;
         this.banner = banner;
-        this.cookie_list = cookie_list;
-        this.pref_center = pref_center;
         this.datetime = datetime;
         this.status = status;
     }
@@ -100,22 +91,6 @@ public class Cookie implements Serializable {
         this.banner = banner;
     }
 
-    public String getCookie_list() {
-        return cookie_list;
-    }
-
-    public void setCookie_list(String cookie_list) {
-        this.cookie_list = cookie_list;
-    }
-
-    public String getPref_center() {
-        return pref_center;
-    }
-
-    public void setPref_center(String pref_center) {
-        this.pref_center = pref_center;
-    }
-
     public Date getDatetime() {
         return datetime;
     }
@@ -141,8 +116,6 @@ public class Cookie implements Serializable {
                 ", unique_cookies=" + unique_cookies +
                 ", cookies_changed='" + cookies_changed + '\'' +
                 ", banner='" + banner + '\'' +
-                ", cookie_list='" + cookie_list + '\'' +
-                ", pref_center='" + pref_center + '\'' +
                 ", datetime=" + datetime +
                 ", status='" + status + '\'' +
                 '}';
